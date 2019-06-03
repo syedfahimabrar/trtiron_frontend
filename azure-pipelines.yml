@@ -20,3 +20,11 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students Starter(308e3aae-67f6-40c0-9e51-a3c9f869e737)'
+    appType: 'webAppLinux'
+    WebAppName: 'tritron'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|lts'
